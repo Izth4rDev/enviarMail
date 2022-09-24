@@ -1,5 +1,6 @@
 //Variables
 const btnEnviar = document.querySelector('#enviar');
+const formulario = document.querySelector('#enviar-mail');
 //variables para campos
 const txtEmail = document.querySelector('#email');
 const txtAsunto = document.querySelector('#asunto');
@@ -43,7 +44,28 @@ function validarFormulario (e){
     }else{
 
         e.target.classList.add('border', 'border-red-500');
+        mostrarError();
        
     }
+
+}
+
+function mostrarError(){
+
+    console.log('error.....');
+    const mensajeError = document.createElement('p');
+    mensajeError.textContent = 'Todos los campos son obligatorios';
+    mensajeError.classList.add('border', 'border-red-500', 'background-red-100', 'text-red-500','p-3', 'mt-5','text-center', 'error');//class tailwind
+   
+
+    const errores = document.querySelectorAll('.error'); //queryselectorAll trae todos los elementos de la clase error
+
+    if(errores.length === 0){//si errores es igual a 0 va a inyectar el mensaje de esta forma no se inyectan mensajes cada vez que un campo tiene error
+
+         formulario.appendChild(mensajeError);//inyecta el mensaje en el HTML
+
+    }
+
+    console.log(errores.length);
 
 }
