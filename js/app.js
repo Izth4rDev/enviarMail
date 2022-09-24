@@ -1,14 +1,21 @@
 //Variables
 const btnEnviar = document.querySelector('#enviar');
-
-
+//variables para campos
+const txtEmail = document.querySelector('#email');
+const txtAsunto = document.querySelector('#asunto');
+const txtMensaje = document.querySelector('#mensaje');
 
 EventListener();
 
 function EventListener(){
 
-        document.addEventListener('DOMContentLoaded', iniciarApp); //ejecutara cuando se carge correctamente el documento
+    document.addEventListener('DOMContentLoaded', iniciarApp); //ejecutara cuando se carge correctamente el documento
 
+    //validar campos
+
+    txtEmail.addEventListener('blur', validarFormulario);
+    txtAsunto.addEventListener('blur', validarFormulario);
+    txtMensaje.addEventListener('blur', validarFormulario);
 
 }
 
@@ -24,3 +31,19 @@ function iniciarApp(){
     
 }
 
+function validarFormulario (e){
+
+    //validamos el largo del value del input para saber si esta vacio
+
+    if(e.target.value.length > 0){
+
+        console.log('aqui hay algo');
+
+
+    }else{
+
+        e.target.classList.add('border', 'border-red-500');
+       
+    }
+
+}
